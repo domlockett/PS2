@@ -1,6 +1,6 @@
 #Leemis' Statistic
 #Create some toy data to test the loop
-a<-c(548,265489,16514,651,864,31,54,231,648,23)
+a<-c(1)
 b<-NULL
 xi<-NULL
 
@@ -36,12 +36,14 @@ cho<-function(c){
   xi<-proportions
   argument<-NULL
   for(i in 1:9){ #This loop calculates the inside of the max function for Leemis m
-    element<-(xi[i]-log((1+1/i), base=10))
-    argument<-sum(element)
-    gains<- sqrt(argument)
-    chosum<-c(gains, element)
-    chogains<-sqrt(chogains)
-    }
+    element<-((xi[i]-log((1+1/i), base=10))^2)
+    chosum<-c(chosum,element)
+    finvec<-sum(chosum)
+    d<-sqrt(finvec)
+  }
+  return(d)
+}
+
   return(chogains)
 }
 cho(a)
